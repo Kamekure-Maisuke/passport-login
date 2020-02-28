@@ -1,5 +1,5 @@
 const LocalStrategy = require('passport-local').Strategy
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 function initialize(passport, getUserByEmail, getUserById) {
   const authenticateUser = async (email, password, done) => {
@@ -8,7 +8,7 @@ function initialize(passport, getUserByEmail, getUserById) {
       return done(null, false, { message: 'ユーザー情報が存在しません。' })
     }
     try {
-      if (await bcrypt.compare(password, user.password)) {
+      if (await bcrypt.compareSync(password, user.password)) {
         return done(null, user)
       }
       return done(null, false, { message: 'パスワードが一致しません' })

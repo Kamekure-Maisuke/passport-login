@@ -3,12 +3,14 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const express = require('express')
-const app = express()
+const compression = require('compression')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
+
+const app = express()
 
 const initializePassport = require('./passport-config')
 initializePassport(
@@ -21,6 +23,7 @@ const users = []
 
 app.set('view-engine', 'ejs')
 app.use(
+  compression(),
   express.urlencoded({ extended: false }),
   flash(),
   session({

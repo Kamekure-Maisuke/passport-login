@@ -1,4 +1,10 @@
-<h1>ホーム画面</h1>
-<form action="/logout?_method=DELETE" method="POST">
-  <button type="submit">ログアウト</button>
-</form>
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3"><%= name %>さん、こんにちは</h1>
+      <form action="/logout?_method=DELETE" method="POST">
+        <button type="submit" class="btn btn-primary btn-block">ログアウト</button>
+      </form>
+    </div>
+  </div>
+</div>

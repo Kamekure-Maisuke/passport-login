@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const express = require('express')
+const expressLayouts = require('express-ejs-layouts');
 const compression = require('compression')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
@@ -21,8 +22,8 @@ initializePassport(
 
 const users = []
 
-app.set('view-engine', 'ejs')
 app.use(
+  expressLayouts,
   compression(),
   express.urlencoded({ extended: false }),
   flash(),
@@ -35,6 +36,9 @@ app.use(
   passport.session(),
   methodOverride('_method')
 )
+
+app.set('view-engine', 'ejs')
+app.set("layout", "layout.ejs");
 
 app.get('/', checkAuthenticated, (req, res) => {
   res.render('index.ejs', { name: req.user.name })

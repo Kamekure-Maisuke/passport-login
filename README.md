@@ -7,7 +7,7 @@
 ```bash
 $ cd passport-login
 # .envの中身は各自適当
-$ touch .env
+$ cp .env.sample .env
 $ npm ci
 ```
 
@@ -15,7 +15,7 @@ $ npm ci
 
 ```bash
 # .envの中身は各自適当
-$ touch .env
+$ cp .env.sample .env
 $ docker-compose up -d --build
 ```
 
